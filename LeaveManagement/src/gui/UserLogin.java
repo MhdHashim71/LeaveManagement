@@ -5,6 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
-public class LoginPage extends JFrame{
+public class UserLogin extends JFrame{
 	
 }

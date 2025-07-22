@@ -1,9 +1,9 @@
 package main;
 
-import gui.LoginPage;
+import gui.FrontPage;
 
 public class Main {
 	public static void main(String[]args) {
-		new LoginPage();
+		new FrontPage();
 	}
 }
