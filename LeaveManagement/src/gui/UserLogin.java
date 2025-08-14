@@ -1,18 +1,18 @@
 package gui;
 
 import dao.DBConnection;
+import main.Main;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.sql.*;
 
 public class UserLogin extends JFrame{
 	public UserLogin() {
 		 setTitle("Login - Leave Manager");
-	        setSize(500, 600);
-	        setDefaultCloseOperation(EXIT_ON_CLOSE);
-	        setLocationRelativeTo(null);
+         setSize(500, 600);
+	     setDefaultCloseOperation(EXIT_ON_CLOSE);
+	     setLocationRelativeTo(null);
 
 	        // Gradient Background Panel
 	        JPanel gradientPanel = new JPanel() {
@@ -32,7 +32,8 @@ public class UserLogin extends JFrame{
 	        goBack.setFocusPainted(false);
 	        goBack.addActionListener(e -> {
 	        	dispose();
-	        	new FrontPage();
+	        	new Main();
+	        	Main.main(null);
 	        });
 	        gradientPanel.add(goBack);
 
@@ -68,12 +69,6 @@ public class UserLogin extends JFrame{
 	        JPasswordField passwordField = new JPasswordField();
 	        passwordField.setBounds(40, 170, 270, 30);
 	        card.add(passwordField);
-
-	        JCheckBox rememberMe = new JCheckBox("Remember me");
-	        rememberMe.setFont(new Font("SansSerif", Font.PLAIN, 11));
-	        rememberMe.setBounds(40, 210, 120, 20);
-	        rememberMe.setOpaque(false);
-	        card.add(rememberMe);
 
 	        JButton forgotPass = new JButton("Forgot password?");
 	        forgotPass.setBounds(200, 210, 110, 20);
@@ -115,6 +110,8 @@ public class UserLogin extends JFrame{
 	                } else {
 	                    if (validateLogin(email, password)) {
 	                        JOptionPane.showMessageDialog(null, "Login Successful!");
+	                        dispose();
+	                        new LeaveU().setVisible(true);
 	                    } else {
 	                        JOptionPane.showMessageDialog(null, "Invalid email or password");
 	                    }
