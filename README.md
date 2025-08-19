@@ -1,4 +1,3 @@
-# LeaveManagement
 # Automated Leave Management System (ALMS)
 
 The Automated Leave Management System (ALMS) is a Java-based desktop application designed to streamline the leave request and approval process for faculty members in educational institutions.
