@@ -8,16 +8,12 @@ import java.sql.*;
 import dao.DBConnection;
 
 public class Leave extends JFrame {
-
     private final String username;
     private int totalRequests = 0, approvedRequests = 0, rejectedRequests = 0, pendingRequests = 0;
-
     public Leave(String user) {
         this.username = user;
         this.usernameCheck();
-
-        // Fetch leave stats
-        fetchLeaveData();
+        fetchLeaveData(); // Fetch leave stats
 
         // Frame setup
         setTitle("Employee Dashboard - Leave Manager");
@@ -228,20 +224,16 @@ public class Leave extends JFrame {
 
     private void fetchLeaveData() {
         totalRequests = approvedRequests = rejectedRequests = pendingRequests = 0;
-
         String sql = "SELECT status, COUNT(*) as count FROM leave_requests WHERE username=? GROUP BY status";
-
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
-
-            pst.setString(1, username);
-
+        	
+        	pst.setString(1, username);
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     String status = rs.getString("status").toLowerCase();
                     int count = rs.getInt("count");
                     totalRequests += count;
-
                     switch (status) {
                         case "approved" -> approvedRequests = count;
                         case "pending" -> pendingRequests = count;
@@ -249,7 +241,6 @@ public class Leave extends JFrame {
                     }
                 }
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error loading leave requests: " + ex.getMessage());
@@ -261,12 +252,10 @@ public class Leave extends JFrame {
 
         String sql = "SELECT leave_type, status, start_date, end_date FROM leave_requests " +
                      "WHERE username=? ORDER BY id DESC LIMIT 3";
-
         try (Connection conn = new DBConnection().getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
 
             pst.setString(1, username);
-
             try (ResultSet rs = pst.executeQuery()) {
                 boolean hasRequests = false;
 
@@ -299,12 +288,10 @@ public class Leave extends JFrame {
                     recentPanel.add(noData);
                 }
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
             recentPanel.add(new JLabel("Error loading requests."));
         }
-
         recentPanel.revalidate();
         recentPanel.repaint();
     }

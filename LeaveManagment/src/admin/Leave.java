@@ -11,7 +11,6 @@ public class Leave extends JFrame {
     private CardLayout cardLayout;
     private JPanel contentPanel;
     private JLabel totalLabel, approvedLabel, rejectedLabel, pendingLabel;
-
     public Leave() {
         setTitle("Leave Manager - Admin");
         setSize(1000, 700);
@@ -103,7 +102,7 @@ public class Leave extends JFrame {
         setVisible(true);
         loadRequestStats();
     }
-
+    
     // Home Panel
     private JPanel createHomePanel() {
         JPanel panel = new JPanel(new BorderLayout());
@@ -162,7 +161,6 @@ public class Leave extends JFrame {
         btnPanel.add(approveBtn);
         btnPanel.add(rejectBtn);
         panel.add(btnPanel, BorderLayout.SOUTH);
-
         loadRequests(model);
 
         // Approve / Reject listeners
@@ -185,7 +183,6 @@ public class Leave extends JFrame {
                 loadRequestStats();
             } else JOptionPane.showMessageDialog(this, "Select a request first!");
         });
-
         return panel;
     }
 
@@ -246,8 +243,6 @@ public class Leave extends JFrame {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         bottomPanel.add(refreshBtn);
         panel.add(bottomPanel, BorderLayout.SOUTH);
-
-        // Initial load
         loadUsers(model);
 
         return panel;
@@ -274,8 +269,6 @@ public class Leave extends JFrame {
         }
     }
 
-
-    // Stat Card
     private JLabel createStatCard(String title, String value, Color color) {
         JLabel label = new JLabel("<html><center>" + title + "<br><b>" + value + "</b></center></html>", SwingConstants.CENTER);
         label.setFont(new Font("Segoe UI", Font.BOLD, 16));
@@ -286,7 +279,6 @@ public class Leave extends JFrame {
         return label;
     }
 
-    // Load Stats
     private void loadRequestStats() {
         try (Connection conn = new DBConnection().getConnection()) {
             Statement stmt = conn.createStatement();

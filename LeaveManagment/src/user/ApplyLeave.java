@@ -11,12 +11,10 @@ import org.jdatepicker.impl.*;
 import dao.DBConnection;
 
 public class ApplyLeave extends JFrame {
-
     private final String username;
     private JComboBox<String> typeBox;
     private JTextArea reasonArea;
     private JDatePickerImpl startDatePicker, endDatePicker;
-
     public ApplyLeave(String user) {
         this.username = user;
 
@@ -75,7 +73,6 @@ public class ApplyLeave extends JFrame {
         p.put("text.today", "Today");
         p.put("text.month", "Month");
         p.put("text.year", "Year");
-
         UtilDateModel model = new UtilDateModel();
         JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
         return new JDatePickerImpl(datePanel, new DateLabelFormatter());

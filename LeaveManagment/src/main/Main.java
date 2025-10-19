@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-
 class FrontPage extends JFrame {
     public FrontPage() {
         setTitle("Leave Manager");
@@ -73,7 +72,6 @@ class FrontPage extends JFrame {
         add(mainPanel);
         setVisible(true);
     }
-
     private void styleButton(JButton button, String colorHex) {
         button.setBackground(Color.decode(colorHex));
         button.setForeground(Color.WHITE);

@@ -47,8 +47,6 @@ public class SignUp extends JFrame {
         card.add(title);
 
         int y = 70, gap = 60;
-
-        // Full Name
         JLabel nameLabel = new JLabel("Full Name");
         nameLabel.setBounds(30, y, 200, 20);
         card.add(nameLabel);

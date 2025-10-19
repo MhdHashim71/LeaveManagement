@@ -116,7 +116,6 @@ public class Login extends JFrame {
             if (rs.next()) {
                 isValid = true;
             }
-
             rs.close();
             stmt.close();
             conn.close();
