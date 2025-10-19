@@ -6,7 +6,6 @@ import javax.swing.*;
 
 
 class FrontPage extends JFrame {
-
     public FrontPage() {
         setTitle("Leave Manager");
         setSize(500, 400);
